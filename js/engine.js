@@ -103,6 +103,13 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+        // update the state of score and lifes in the game
+        setTimeout(function() {
+            let scSpan = document.querySelector('.score');
+            let lifeSPan = document.querySelector('.lifes');
+            scSpan.textContent = "Score: " + score;
+            lifeSPan.textContent = "Lifes: " + lifes;
+        },200);
     }
 
     /* This function initially draws the "game level", it will then call
