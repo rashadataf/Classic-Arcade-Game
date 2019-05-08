@@ -315,6 +315,23 @@ let choosePosition = function () {
     // return the chosen position
     return position;
 };
+// in case of winning
+// make all objects doesn't exist
+// reset the speed of the enemies
+function winState() {
+    allRocks.forEach(function(rock){
+        rock.isRock = false;
+    });
+    star.isStar = false;
+    gem.isGem = false;
+    key.isKey = false;
+    heart.isHeart = false;
+    allEnemies.forEach(function(enemy){
+        enemy.speed = Math.floor(Math.random()*3);
+    });
+    // initiate new positions
+    initPositions();
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
