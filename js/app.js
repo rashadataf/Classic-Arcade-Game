@@ -70,6 +70,10 @@ Player.prototype.update = function () {
         this.x = 408;
     }
 };
+// Draw the player on the screen, required method for game
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
