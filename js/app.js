@@ -49,6 +49,8 @@ Enemy.prototype.update = function (dt) {
         }
         this.y = rnd;
     }
+    // make the enemy check for the collision
+    checkCollision();
 };
 
 // Draw the enemy on the screen, required method for game
@@ -70,6 +72,8 @@ let Player = function() {
 Player.prototype.update = function () {
     if (this.y <= 0) {
         this.y = 400;
+        // if the player reach the water it is a win state
+        winState();
     }
     if (this.y >= 400) {
         this.y = 400;
@@ -593,7 +597,7 @@ let key = new Key();
 let heart = new Heart()
 // call the initPositions function to create positions
 initPositions();
-
+setTimeout(start,75);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
