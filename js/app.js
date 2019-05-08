@@ -3,10 +3,26 @@ let score = 0;
 // variable to hold the number of lifes player has
 let lifes = 3;
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function () {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
+    // the x coordinate for the enemy
+    this.x = 1;
+    // choose the y coordinate of the enemy randomly
+    let rnd = Math.floor(Math.random() * 230);
+    if (rnd <= 60) {
+        rnd = 60;
+    }
+    else if (rnd > 60 && rnd <= 145) {
+        rnd = 145;
+    }
+    else {
+        rnd = 230;
+    }
+    this.y = rnd;
+    // variable to hold the speed of the enemy
+    this.speed = Math.floor(Math.random() * 3);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
