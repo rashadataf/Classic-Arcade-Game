@@ -30,10 +30,25 @@ var Enemy = function () {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function (dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    this.x = (this.x + this.speed) * (dt + 1);
+    if (this.x > 404) {
+        this.x = 2;
+        let rnd = Math.floor(Math.random() * 230);
+        if (rnd <= 60) {
+            rnd = 60;
+        }
+        else if (rnd > 60 && rnd <= 145) {
+            rnd = 145;
+        }
+        else {
+            rnd = 230;
+        }
+        this.y = rnd;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
