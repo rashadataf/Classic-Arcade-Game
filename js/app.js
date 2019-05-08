@@ -505,6 +505,65 @@ function createStart() {
     fifthPlayer.x = 400;
     fifthPlayer.render();
 };
+// function to start the game
+function start(){
+    cancelAnimationFrame(handle);
+    resetState();
+    createStart();
+    // create div with 'container' class before canvas 
+    document.body.insertAdjacentHTML('beforebegin','<div class="container"></div>');
+    // call the createControls() after 100 ms
+    setTimeout(createControls(),100);
+};
+// function to draw some control elements
+// score span
+// life span
+// replay button
+function createControls() {
+    // select the div with the 'container' class
+    let div = document.querySelector('.container');
+    // create span to format the apperance of controls
+    let emptySpan = document.createElement('span');
+    // add 'col-3' class to the created span
+    emptySpan.classList.add('col-3');
+    // add the created span to the div
+    div.append(emptySpan);
+    // create a new span that will hold the score
+    let span = document.createElement('span');
+    // write some text indicate to score inside the span
+    span.textContent = "Score: " + score;
+    // add 'col-3' and 'score' classes to created span
+    span.classList.add('col-3');
+    span.classList.add('score');
+    // add the span to the div
+    div.append(span);
+    // create span for lifes
+    let lifeSpan = document.createElement('span');
+    // set the text of span
+    lifeSpan.textContent = "Lifes: " + lifes;
+    // add classes to it
+    lifeSpan.classList.add('col-1');
+    lifeSpan.classList.add('lifes');
+    // add it to div
+    div.append(lifeSpan);
+    // create span for replay button
+    let replay = document.createElement('span');
+    // make it appear like the replay
+    replay.textContent = "\u27f2";
+    // add classes to replay
+    replay.classList.add('col-1');
+    replay.classList.add('clickable');
+    // add replay to div
+    div.append(replay);
+    // determine what happend when clicking on replay
+    replay.addEventListener('click', function () {
+        cancelAnimationFrame(handle);
+        setTimeout(function(){
+            resetState();
+            createStart();
+        },150);
+    });
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
