@@ -122,6 +122,104 @@ Gem.prototype.render = function () {
     // draw the gem
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+// the Rock class will represent rock
+let Rock = function() {
+    // coordinates to the rock
+    this.x = 0;
+    this.y = 0;
+    // variable to indicate if ther is a rock
+    this.isRock = false;
+    // variable to help drawing the rock
+    this.sprite = 'images/Rock.png';
+};
+// render function to draw the rock
+Rock.prototype.render = function() {
+    // check if the rock is already exist
+    if(!this.isRock) {
+        // choose position
+        let position = choosePosition();
+        // assign chosen position to the coordinates of rock
+        this.x = position.x;
+        this.y = position.y;
+        // make the isRock equal to true to inicate that rock is exist
+        this.isRock = true;
+    }
+    // draw the rock
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+// the Star class will represent the star
+let Star = function() {
+    // initial coordinates
+    this.x = 0;
+    this.y = 0;
+    // variable to indicate if the star already exists
+    this.isStar = false;
+    // sprite to help drawing the star
+    this.sprite = 'images/Star.png';
+};
+// the render function to draw the star
+Star.prototype.render = function() {
+    // check if there is a star
+    if(!this.isStar) {
+        // choose position and assign it to x and y
+        let position = choosePosition();
+        this.x = position.x;
+        this.y = position.y;
+        // make the star exist
+        this.isStar = true;
+    }
+    // draw the star
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+// Key class to represent the key
+let Key = function() {
+    // initial x and y
+    this.x = 0;
+    this.y = 0;
+    // no key at start
+    this.isKey = false;
+    // sprite of the key
+    this.sprite = 'images/Key.png';
+};
+// render function to draw the key
+Key.prototype.render = function() {
+    // check if there is a key
+    if(!this.isKey) {
+        // choose position and assign it to x and y
+        let position = choosePosition();
+        this.x = position.x;
+        this.y = position.y;
+        // the key is exist
+        this.isKey = true;
+    }
+    // draw the key
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+// Heart class to represent the heart
+let Heart = function () {
+    // initial x and y
+    this.x = 0;
+    this.y = 0;
+    // initial state no heart
+    this.isHeart = false;
+    // sprite of the heart
+    this.sprite = 'images/Heart.png';
+};
+// render function to draw the heart
+Heart.prototype.render = function() {
+    // check if there is a heart
+    if(!this.isHeart) {
+        // choose position and assign it to x and y
+        let position = choosePosition();
+        this.x = position.x;
+        this.y = position.y;
+        // make heart exist
+        this.isHeart = true;
+    }
+    // draw the heart
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
 // an array that will hold position objects
 // each object have x and y
 let positions = [];
