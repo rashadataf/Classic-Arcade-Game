@@ -318,7 +318,30 @@ let choosePosition = function () {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
+// first enemy
+let enemy1 = new Enemy();
+// second enemy
+let enemy2 = new Enemy();
+// third enemy
+let enemy3 = new Enemy();
+// all the enemies in an array
+let allEnemies = [enemy1,enemy2,enemy3];
+// the player
+let player = new Player();
+// the gem
+let gem = new Gem();
+// first rock
+let rock1 = new Rock();
+// second rock
+let rock2 = new Rock();
+// all of the rocks
+let allRocks = [rock1,rock2];
+// the star
+let star = new Star();
+// the key
+let key = new Key();
+// the heart
+let heart = new Heart()
 // call the initPositions function to create positions
 initPositions();
 
