@@ -610,3 +610,15 @@ document.addEventListener('keyup', function(e) {
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
+// check if the player has lost his lifes and 
+// draw some text indicate that game over
+// and tell him the scor he achieve
+setInterval(function(){
+    if(lifes === 0) {
+        let phrase = "Your Score is " + score;
+        cancelAnimationFrame(handle);
+        resetState();
+        ctx.fillText(phrase,100,180);
+        ctx.fillText("Game Over press replay to play again",0,270)
+    }
+},10);
