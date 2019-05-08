@@ -54,13 +54,13 @@ Enemy.prototype.update = function (dt) {
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-let Player = function() {
+let Player = function () {
     // the initial x and y for the player
     this.x = 204;
     this.y = 400;
@@ -86,7 +86,7 @@ Player.prototype.update = function () {
     }
 };
 // Draw the player on the screen, required method for game
-Player.prototype.render = function() {
+Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 // function to make actions when pressing keys
@@ -97,27 +97,27 @@ Player.prototype.handleInput = function (direction) {
     if (direction === "up") {
         // check if there is a rock
         // if there is no rock the player will move up
-        if (!(((player.x === rock1.x) && (player.y === (rock1.y + 85))) || ((player.x === rock2.x) && (player.y === (rock2.y + 85))))){
+        if (!(((player.x === rock1.x) && (player.y === (rock1.y + 85))) || ((player.x === rock2.x) && (player.y === (rock2.y + 85))))) {
             this.y -= 85;
         }
     }
     // check if the pressed key is down
     else if (direction === "down") {
         // if there is no rock below the player it will move down
-        if (!(((player.x === rock1.x) && (player.y === (rock1.y - 85))) || ((player.x === rock2.x) && (player.y === (rock2.y - 85))))){
+        if (!(((player.x === rock1.x) && (player.y === (rock1.y - 85))) || ((player.x === rock2.x) && (player.y === (rock2.y - 85))))) {
             this.y += 85;
         }
     }
     // if pressed key is left
     else if (direction === "left") {
         // if there is no rock on the left of the player
-        if (!(((player.x === (rock1.x+102)) && (player.y === rock1.y)) || ((player.x === (rock2.x+102)) && (player.y === rock2.y)))){
+        if (!(((player.x === (rock1.x + 102)) && (player.y === rock1.y)) || ((player.x === (rock2.x + 102)) && (player.y === rock2.y)))) {
             this.x -= 102;
         }
     }
     // if pressed key is right
     else if (direction === "right") {
-        if (!(((player.x === (rock1.x-102)) && (player.y === rock1.y)) || ((player.x === (rock2.x-102)) && (player.y === rock2.y)))){
+        if (!(((player.x === (rock1.x - 102)) && (player.y === rock1.y)) || ((player.x === (rock2.x - 102)) && (player.y === rock2.y)))) {
             this.x += 102;
         }
     }
@@ -185,7 +185,7 @@ Gem.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 // the Rock class will represent rock
-let Rock = function() {
+let Rock = function () {
     // coordinates to the rock
     this.x = 0;
     this.y = 0;
@@ -195,9 +195,9 @@ let Rock = function() {
     this.sprite = 'images/Rock.png';
 };
 // render function to draw the rock
-Rock.prototype.render = function() {
+Rock.prototype.render = function () {
     // check if the rock is already exist
-    if(!this.isRock) {
+    if (!this.isRock) {
         // choose position
         let position = choosePosition();
         // assign chosen position to the coordinates of rock
@@ -210,7 +210,7 @@ Rock.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 // the Star class will represent the star
-let Star = function() {
+let Star = function () {
     // initial coordinates
     this.x = 0;
     this.y = 0;
@@ -220,9 +220,9 @@ let Star = function() {
     this.sprite = 'images/Star.png';
 };
 // the render function to draw the star
-Star.prototype.render = function() {
+Star.prototype.render = function () {
     // check if there is a star
-    if(!this.isStar) {
+    if (!this.isStar) {
         // choose position and assign it to x and y
         let position = choosePosition();
         this.x = position.x;
@@ -234,7 +234,7 @@ Star.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 // Key class to represent the key
-let Key = function() {
+let Key = function () {
     // initial x and y
     this.x = 0;
     this.y = 0;
@@ -244,9 +244,9 @@ let Key = function() {
     this.sprite = 'images/Key.png';
 };
 // render function to draw the key
-Key.prototype.render = function() {
+Key.prototype.render = function () {
     // check if there is a key
-    if(!this.isKey) {
+    if (!this.isKey) {
         // choose position and assign it to x and y
         let position = choosePosition();
         this.x = position.x;
@@ -268,9 +268,9 @@ let Heart = function () {
     this.sprite = 'images/Heart.png';
 };
 // render function to draw the heart
-Heart.prototype.render = function() {
+Heart.prototype.render = function () {
     // check if there is a heart
-    if(!this.isHeart) {
+    if (!this.isHeart) {
         // choose position and assign it to x and y
         let position = choosePosition();
         this.x = position.x;
@@ -381,15 +381,15 @@ let choosePosition = function () {
 // make all objects doesn't exist
 // reset the speed of the enemies
 function winState() {
-    allRocks.forEach(function(rock){
+    allRocks.forEach(function (rock) {
         rock.isRock = false;
     });
     star.isStar = false;
     gem.isGem = false;
     key.isKey = false;
     heart.isHeart = false;
-    allEnemies.forEach(function(enemy){
-        enemy.speed = Math.floor(Math.random()*3);
+    allEnemies.forEach(function (enemy) {
+        enemy.speed = Math.floor(Math.random() * 3);
     });
     // initiate new positions
     initPositions();
@@ -401,15 +401,15 @@ function checkCollision() {
     let enemy1X = Math.floor(enemy1.x);
     let enemy2X = Math.floor(enemy2.x);
     let enemy3X = Math.floor(enemy3.x);
-    
+
     let range = 50;
     if (enemy1X >= (player.x - range) && enemy1X <= (player.x + range)) {
         if (enemy1.y === player.y) {
             player.x = 204;
             player.y = 400;
-            score = (score>10)?(score-10):0;
+            score = (score > 10) ? (score - 10) : 0;
             lifes -= 1;
-            if(lifes === 0) {
+            if (lifes === 0) {
                 cancelAnimationFrame(handle);
             }
         }
@@ -418,9 +418,9 @@ function checkCollision() {
         if (enemy2.y === player.y) {
             player.x = 204;
             player.y = 400;
-            score = (score>10)?(score-10):0;
+            score = (score > 10) ? (score - 10) : 0;
             lifes -= 1;
-            if(lifes === 0) {
+            if (lifes === 0) {
                 cancelAnimationFrame(handle);
             }
         }
@@ -429,39 +429,39 @@ function checkCollision() {
         if (enemy3.y === player.y) {
             player.x = 204;
             player.y = 400;
-            score = (score>10)?(score-10):0;
+            score = (score > 10) ? (score - 10) : 0;
             lifes -= 1;
-            if(lifes === 0) {
+            if (lifes === 0) {
                 cancelAnimationFrame(handle);
             }
         }
     }
-    if(player.x===star.x && player.y===star.y) {
+    if (player.x === star.x && player.y === star.y) {
         score += 100;
         star.x = -100;
     }
-    if(player.x === gem.x && player.y === gem.y) {
-        if(gem.sprite === 'images/Gem Orange.png') {
+    if (player.x === gem.x && player.y === gem.y) {
+        if (gem.sprite === 'images/Gem Orange.png') {
             gem.x = -100;
             score += 25;
         }
-        else if(gem.sprite === 'images/Gem Green.png') {
+        else if (gem.sprite === 'images/Gem Green.png') {
             gem.x = -100;
             score += 50;
         }
-        else if(gem.sprite === 'images/Gem Blue.png') {
+        else if (gem.sprite === 'images/Gem Blue.png') {
             gem.x = -100;
             score += 75;
         }
     }
-    if(player.x === key.x && player.y === key.y) {
-        allEnemies.forEach(function(enemy){
+    if (player.x === key.x && player.y === key.y) {
+        allEnemies.forEach(function (enemy) {
             enemy.speed = 0;
             key.x = -100;
         });
     }
-    if(player.x === heart.x && player.y === heart.y) {
-        lifes +=1;
+    if (player.x === heart.x && player.y === heart.y) {
+        lifes += 1;
         heart.x = -100;
     }
 };
@@ -469,19 +469,19 @@ function checkCollision() {
 // and draw charecters
 function createStart() {
     // the font properties
-    ctx.font="30px arial";
+    ctx.font = "30px arial";
     // the color of the font
-    ctx.fillStyle="#632306";
+    ctx.fillStyle = "#632306";
     // draw the text in the (x=100,y=200) position
-    ctx.fillText("please choose a player",100,200);
+    ctx.fillText("please choose a player", 100, 200);
     // draw the text in the (x=70,y=250) position
-    ctx.fillText("by pressing the equal number",70,250)
+    ctx.fillText("by pressing the equal number", 70, 250);
     // draw 1,2,3,4,5 on top of each player
-    ctx.fillText("1",40,430);
-    ctx.fillText("2",140,430);
-    ctx.fillText("3",240,430);
-    ctx.fillText("4",340,430);
-    ctx.fillText("5",440,430);
+    ctx.fillText("1", 40, 430);
+    ctx.fillText("2", 140, 430);
+    ctx.fillText("3", 240, 430);
+    ctx.fillText("4", 340, 430);
+    ctx.fillText("5", 440, 430);
     let players = ['images/char-boy.png',
         'images/char-cat-girl.png',
         'images/char-horn-girl.png',
@@ -510,14 +510,14 @@ function createStart() {
     fifthPlayer.render();
 };
 // function to start the game
-function start(){
+function start() {
     cancelAnimationFrame(handle);
     resetState();
     createStart();
     // create div with 'container' class before canvas 
-    document.body.insertAdjacentHTML('beforebegin','<div class="container"></div>');
+    document.body.insertAdjacentHTML('beforebegin', '<div class="container"></div>');
     // call the createControls() after 100 ms
-    setTimeout(createControls(),100);
+    setTimeout(createControls(), 100);
 };
 // function to draw some control elements
 // score span
@@ -562,10 +562,10 @@ function createControls() {
     // determine what happend when clicking on replay
     replay.addEventListener('click', function () {
         cancelAnimationFrame(handle);
-        setTimeout(function(){
+        setTimeout(function () {
             resetState();
             createStart();
-        },150);
+        }, 150);
     });
 };
 // Now instantiate your objects.
@@ -578,7 +578,7 @@ let enemy2 = new Enemy();
 // third enemy
 let enemy3 = new Enemy();
 // all the enemies in an array
-let allEnemies = [enemy1,enemy2,enemy3];
+let allEnemies = [enemy1, enemy2, enemy3];
 // the player
 let player = new Player();
 // the gem
@@ -588,19 +588,19 @@ let rock1 = new Rock();
 // second rock
 let rock2 = new Rock();
 // all of the rocks
-let allRocks = [rock1,rock2];
+let allRocks = [rock1, rock2];
 // the star
 let star = new Star();
 // the key
 let key = new Key();
 // the heart
-let heart = new Heart()
+let heart = new Heart();
 // call the initPositions function to create positions
 initPositions();
-setTimeout(start,75);
+setTimeout(start, 75);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     let allowedKeys = {
         37: 'left',
         38: 'up',
@@ -617,12 +617,12 @@ document.addEventListener('keyup', function(e) {
 // check if the player has lost his lifes and 
 // draw some text indicate that game over
 // and tell him the scor he achieve
-setInterval(function(){
-    if(lifes === 0) {
+setInterval(function () {
+    if (lifes === 0) {
         let phrase = "Your Score is " + score;
         cancelAnimationFrame(handle);
         resetState();
-        ctx.fillText(phrase,100,180);
-        ctx.fillText("Game Over press replay to play again",0,270)
+        ctx.fillText(phrase, 100, 180);
+        ctx.fillText("Game Over press replay to play again", 0, 270);
     }
-},10);
+}, 10);
