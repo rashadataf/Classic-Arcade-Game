@@ -461,6 +461,50 @@ function checkCollision() {
         heart.x = -100;
     }
 };
+// a function to draw some text on the start of the game
+// and draw charecters
+function createStart() {
+    // the font properties
+    ctx.font="30px arial";
+    // the color of the font
+    ctx.fillStyle="#632306";
+    // draw the text in the (x=100,y=200) position
+    ctx.fillText("please choose a player",100,200);
+    // draw the text in the (x=70,y=250) position
+    ctx.fillText("by pressing the equal number",70,250)
+    // draw 1,2,3,4,5 on top of each player
+    ctx.fillText("1",40,430);
+    ctx.fillText("2",140,430);
+    ctx.fillText("3",240,430);
+    ctx.fillText("4",340,430);
+    ctx.fillText("5",440,430);
+    let players = ['images/char-boy.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png'];
+    let firstPlayer = new Player();
+    let secondPlayer = new Player();
+    let thirdPlayer = new Player();
+    let fourthPlayer = new Player();
+    let fifthPlayer = new Player();
+    // draw characters
+    firstPlayer.sprite = players[0];
+    firstPlayer.x = 1;
+    firstPlayer.render();
+    secondPlayer.sprite = players[1];
+    secondPlayer.x = 100;
+    secondPlayer.render();
+    thirdPlayer.sprite = players[2];
+    thirdPlayer.x = 200;
+    thirdPlayer.render();
+    fourthPlayer.sprite = players[3];
+    fourthPlayer.x = 300;
+    fourthPlayer.render();
+    fifthPlayer.sprite = players[4];
+    fifthPlayer.x = 400;
+    fifthPlayer.render();
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
