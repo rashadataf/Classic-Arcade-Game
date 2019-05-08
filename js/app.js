@@ -332,6 +332,77 @@ function winState() {
     // initiate new positions
     initPositions();
 };
+// function to check if there any collision has happened
+// between player and each other object
+// and decide what to do
+function checkCollision() {
+    let enemy1X = Math.floor(enemy1.x);
+    let enemy2X = Math.floor(enemy2.x);
+    let enemy3X = Math.floor(enemy3.x);
+    
+    let range = 50;
+    if (enemy1X >= (player.x - range) && enemy1X <= (player.x + range)) {
+        if (enemy1.y === player.y) {
+            player.x = 204;
+            player.y = 400;
+            score = (score>10)?(score-10):0;
+            lifes -= 1;
+            if(lifes === 0) {
+                cancelAnimationFrame(handle);
+            }
+        }
+    }
+    else if (enemy2X >= (player.x - range) && enemy2X <= (player.x + range)) {
+        if (enemy2.y === player.y) {
+            player.x = 204;
+            player.y = 400;
+            score = (score>10)?(score-10):0;
+            lifes -= 1;
+            if(lifes === 0) {
+                cancelAnimationFrame(handle);
+            }
+        }
+    }
+    else if (enemy3X >= (player.x - range) && enemy3X <= (player.x + range)) {
+        if (enemy3.y === player.y) {
+            player.x = 204;
+            player.y = 400;
+            score = (score>10)?(score-10):0;
+            lifes -= 1;
+            if(lifes === 0) {
+                cancelAnimationFrame(handle);
+            }
+        }
+    }
+    if(player.x===star.x && player.y===star.y) {
+        score += 100;
+        star.x = -100;
+    }
+    if(player.x === gem.x && player.y === gem.y) {
+        if(gem.sprite === 'images/Gem Orange.png') {
+            gem.x = -100;
+            score += 25;
+        }
+        else if(gem.sprite === 'images/Gem Green.png') {
+            gem.x = -100;
+            score += 50;
+        }
+        else if(gem.sprite === 'images/Gem Blue.png') {
+            gem.x = -100;
+            score += 75;
+        }
+    }
+    if(player.x === key.x && player.y === key.y) {
+        allEnemies.forEach(function(enemy){
+            enemy.speed = 0;
+            key.x = -100;
+        });
+    }
+    if(player.x === heart.x && player.y === heart.y) {
+        lifes +=1;
+        heart.x = -100;
+    }
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
