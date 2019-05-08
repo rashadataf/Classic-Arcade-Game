@@ -33,17 +33,17 @@ While you are playing some objects will appear to you as a help.
 
 
 You have two kinds of objects :
-1- Collectable objects
-2- Constant Objects
+1. Collectable objects
+2. Constant Objects
 
 - The Collectable objects : an objects you can collect while you are playing and there are 4 objects you can collect :
-*- Gem's : there are 3 type of gem's in the game
-	a- Blue gem : if you take this gem 75 points will be added to the score.
-	b- Green gem : if you take this gem 50 points will be added to the score.
-	c- Orange : if you take this gem 25 points will be added to the score.
-*- Star : this object will add 100 points to the score.
-*- Key : this object will slow the speed of the enemies so you can move easily.
-*- Heart : this object will add a life to your lifes.
+1. Gem's : there are 3 type of gem's in the game
+	* Blue gem : if you take this gem 75 points will be added to the score.
+	* Green gem : if you take this gem 50 points will be added to the score.
+	* Orange : if you take this gem 25 points will be added to the score.
+2. Star : this object will add 100 points to the score.
+3. Key : this object will slow the speed of the enemies so you can move easily.
+4. Heart : this object will add a life to your lifes.
 - The constant object is **Rocks** this objects will appear while you are playing and you need to turn around them because you can't walk through them.
 
 #### When the game finished
