@@ -85,6 +85,64 @@ Player.prototype.update = function () {
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+// function to make actions when pressing keys
+// each key will bring a string with it
+// this string called direction
+Player.prototype.handleInput = function (direction) {
+    // if the pressed key is up
+    if (direction === "up") {
+        // check if there is a rock
+        // if there is no rock the player will move up
+        if (!(((player.x === rock1.x) && (player.y === (rock1.y + 85))) || ((player.x === rock2.x) && (player.y === (rock2.y + 85))))){
+            this.y -= 85;
+        }
+    }
+    // check if the pressed key is down
+    else if (direction === "down") {
+        // if there is no rock below the player it will move down
+        if (!(((player.x === rock1.x) && (player.y === (rock1.y - 85))) || ((player.x === rock2.x) && (player.y === (rock2.y - 85))))){
+            this.y += 85;
+        }
+    }
+    // if pressed key is left
+    else if (direction === "left") {
+        // if there is no rock on the left of the player
+        if (!(((player.x === (rock1.x+102)) && (player.y === rock1.y)) || ((player.x === (rock2.x+102)) && (player.y === rock2.y)))){
+            this.x -= 102;
+        }
+    }
+    // if pressed key is right
+    else if (direction === "right") {
+        if (!(((player.x === (rock1.x-102)) && (player.y === rock1.y)) || ((player.x === (rock2.x-102)) && (player.y === rock2.y)))){
+            this.x += 102;
+        }
+    }
+    // if pressed key is number one
+    else if (direction === "one") {
+        player.sprite = 'images/char-boy.png';
+        startFunction();
+    }
+    // if pressed key is number two
+    else if (direction === "two") {
+        player.sprite = 'images/char-cat-girl.png';
+        startFunction();
+    }
+    // if pressed key is number three
+    else if (direction === "three") {
+        player.sprite = 'images/char-horn-girl.png';
+        startFunction();
+    }
+    // if pressed key is number four
+    else if (direction === "four") {
+        player.sprite = 'images/char-pink-girl.png';
+        startFunction();
+    }
+    // if pressed key is number five
+    else if (direction === "five") {
+        player.sprite = 'images/char-princess-girl.png';
+        startFunction();
+    }
+};
 // the gem class to represent the gems while playing
 // there are three gems :
 // 1-blue gem
@@ -436,12 +494,16 @@ initPositions();
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
+    let allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
-        40: 'down'
+        40: 'down',
+        49: 'one',
+        50: 'two',
+        51: 'three',
+        52: 'four',
+        53: 'five'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 });
