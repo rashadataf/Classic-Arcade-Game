@@ -1,3 +1,7 @@
+// variable to hold the value of the score
+let score = 0;
+// variable to hold the number of lifes player has
+let lifes = 3;
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
