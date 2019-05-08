@@ -55,7 +55,21 @@ Enemy.prototype.update = function (dt) {
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
+// update the player position function
+Player.prototype.update = function () {
+    if (this.y <= 0) {
+        this.y = 400;
+    }
+    if (this.y >= 400) {
+        this.y = 400;
+    }
+    if (this.x < 0) {
+        this.x = 0;
+    }
+    if (this.x > 408) {
+        this.x = 408;
+    }
+};
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
