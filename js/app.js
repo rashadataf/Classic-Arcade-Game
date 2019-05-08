@@ -73,6 +73,7 @@ Player.prototype.update = function () {
     if (this.y <= 0) {
         this.y = 400;
         // if the player reach the water it is a win state
+        window.alert("You have won...");
         winState();
     }
     if (this.y >= 400) {
@@ -398,42 +399,44 @@ function winState() {
 // between player and each other object
 // and decide what to do
 function checkCollision() {
-    let enemy1X = Math.floor(enemy1.x);
-    let enemy2X = Math.floor(enemy2.x);
-    let enemy3X = Math.floor(enemy3.x);
-
-    let range = 50;
-    if (enemy1X >= (player.x - range) && enemy1X <= (player.x + range)) {
-        if (enemy1.y === player.y) {
-            player.x = 204;
-            player.y = 400;
-            score = (score > 10) ? (score - 10) : 0;
-            lifes -= 1;
-            if (lifes === 0) {
-                cancelAnimationFrame(handle);
-            }
+    let range = 70;
+    if (enemy1.x < player.x + range &&
+        enemy1.x + range > player.x &&
+        enemy1.y < player.y + range &&
+        enemy1.y + range > player.y) {
+        window.alert('Ooops you have collison with an enemy...')
+        player.x = 204;
+        player.y = 400;
+        score = (score > 10) ? (score - 10) : 0;
+        lifes -= 1;
+        if (lifes === 0) {
+            cancelAnimationFrame(handle);
         }
     }
-    else if (enemy2X >= (player.x - range) && enemy2X <= (player.x + range)) {
-        if (enemy2.y === player.y) {
-            player.x = 204;
-            player.y = 400;
-            score = (score > 10) ? (score - 10) : 0;
-            lifes -= 1;
-            if (lifes === 0) {
-                cancelAnimationFrame(handle);
-            }
+    else if (enemy2.x < player.x + range &&
+        enemy2.x + range > player.x &&
+        enemy2.y < player.y + range &&
+        enemy2.y + range > player.y) {
+        window.alert('Ooops you have collison with an enemy...')
+        player.x = 204;
+        player.y = 400;
+        score = (score > 10) ? (score - 10) : 0;
+        lifes -= 1;
+        if (lifes === 0) {
+            cancelAnimationFrame(handle);
         }
     }
-    else if (enemy3X >= (player.x - range) && enemy3X <= (player.x + range)) {
-        if (enemy3.y === player.y) {
-            player.x = 204;
-            player.y = 400;
-            score = (score > 10) ? (score - 10) : 0;
-            lifes -= 1;
-            if (lifes === 0) {
-                cancelAnimationFrame(handle);
-            }
+    else if (enemy3.x < player.x + range &&
+        enemy3.x + range > player.x &&
+        enemy3.y < player.y + range &&
+        enemy3.y + range > player.y) {
+        window.alert('Ooops you have collison with an enemy...')
+        player.x = 204;
+        player.y = 400;
+        score = (score > 10) ? (score - 10) : 0;
+        lifes -= 1;
+        if (lifes === 0) {
+            cancelAnimationFrame(handle);
         }
     }
     if (player.x === star.x && player.y === star.y) {
