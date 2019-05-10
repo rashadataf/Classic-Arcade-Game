@@ -23,9 +23,15 @@ var Enemy = function () {
     this.y = rnd;
     // variable to hold the speed of the enemy
     this.speed = Math.floor(Math.random() * 3);
+    // make an array of all possible enemies
+    let enemySprites = ['images/enemy-bug.png', 'images/enemy-dora.png', 'images/enemy-simba.png',
+        'images/enemy-snail.png'];
+    // make variable to hold random number
+    let ranSprite = Math.floor(Math.random() * 4);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-snail.png';
+    // choose enemy randomly
+    this.sprite = enemySprites[ranSprite];
 };
 
 // Update the enemy's position, required method for game
@@ -36,6 +42,15 @@ Enemy.prototype.update = function (dt) {
     // all computers.
     this.x = (this.x + this.speed) * (dt + 1);
     if (this.x > 404) {
+        // make an array of all possible enemies
+        let enemySprites = ['images/enemy-bug.png', 'images/enemy-dora.png', 'images/enemy-simba.png',
+            'images/enemy-snail.png'];
+        // make variable to hold random number
+        let ranSprite = Math.floor(Math.random() * 4);
+        // The image/sprite for our enemies, this uses
+        // a helper we've provided to easily load images
+        // choose enemy randomly
+        this.sprite = enemySprites[ranSprite];
         this.x = 2;
         let rnd = Math.floor(Math.random() * 230);
         if (rnd <= 60) {
