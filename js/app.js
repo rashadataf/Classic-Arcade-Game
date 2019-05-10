@@ -1,3 +1,4 @@
+"use strict";
 // variable to hold the value of the score
 let score = 0;
 // variable to hold the number of lifes player has
@@ -100,6 +101,7 @@ Player.prototype.update = function () {
     if (this.x > 408) {
         this.x = 408;
     }
+    checkCollision();
 };
 // Draw the player on the screen, required method for game
 Player.prototype.render = function () {
@@ -415,45 +417,21 @@ function winState() {
 // and decide what to do
 function checkCollision() {
     let range = 70;
-    if (enemy1.x < player.x + range &&
-        enemy1.x + range > player.x &&
-        enemy1.y < player.y + range &&
-        enemy1.y + range > player.y) {
-        window.alert('Ooops you have collison with an enemy...')
-        player.x = 204;
-        player.y = 400;
-        score = (score > 10) ? (score - 10) : 0;
-        lifes -= 1;
-        if (lifes === 0) {
-            cancelAnimationFrame(handle);
+    allEnemies.forEach(function (enemy) {
+        if (enemy.x < player.x + range &&
+            enemy.x + range > player.x &&
+            enemy.y < player.y + range &&
+            enemy.y + range > player.y) {
+            window.alert('Ooops you have collison with an enemy...')
+            player.x = 204;
+            player.y = 400;
+            score = (score > 10) ? (score - 10) : 0;
+            lifes -= 1;
+            if (lifes === 0) {
+                cancelAnimationFrame(handle);
+            }
         }
-    }
-    else if (enemy2.x < player.x + range &&
-        enemy2.x + range > player.x &&
-        enemy2.y < player.y + range &&
-        enemy2.y + range > player.y) {
-        window.alert('Ooops you have collison with an enemy...')
-        player.x = 204;
-        player.y = 400;
-        score = (score > 10) ? (score - 10) : 0;
-        lifes -= 1;
-        if (lifes === 0) {
-            cancelAnimationFrame(handle);
-        }
-    }
-    else if (enemy3.x < player.x + range &&
-        enemy3.x + range > player.x &&
-        enemy3.y < player.y + range &&
-        enemy3.y + range > player.y) {
-        window.alert('Ooops you have collison with an enemy...')
-        player.x = 204;
-        player.y = 400;
-        score = (score > 10) ? (score - 10) : 0;
-        lifes -= 1;
-        if (lifes === 0) {
-            cancelAnimationFrame(handle);
-        }
-    }
+    });
     if (player.x === star.x && player.y === star.y) {
         score += 100;
         star.x = -100;
