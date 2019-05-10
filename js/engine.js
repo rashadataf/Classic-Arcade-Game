@@ -247,7 +247,10 @@ var Engine = (function(global) {
         'images/Rock.png',
         'images/Star.png',
         'images/Key.png',
-        'images/Heart.png'
+        'images/Heart.png',
+        'images/enemy-simba.png',
+        'images/enemy-dora.png',
+        'images/enemy-snail.png'
     ]);
     Resources.onReady(init);
 

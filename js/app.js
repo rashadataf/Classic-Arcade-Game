@@ -25,7 +25,7 @@ var Enemy = function () {
     this.speed = Math.floor(Math.random() * 3);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = 'images/enemy-snail.png';
 };
 
 // Update the enemy's position, required method for game
